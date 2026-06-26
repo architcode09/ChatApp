@@ -5,7 +5,6 @@ import { connectionDB } from "./lib/db.js";
 import User from "./models/user.model.js";
 import {clerkMiddleware} from "@clerk/express";
 import cors from "cors";
-import fd from "fs"
 import path from "path";
 
 const app = express();
@@ -18,6 +17,7 @@ const publicDir = path.join(process.cwd(),"public");
 app.use(express.json());
 app.use(cors({origin:FRONTEND_URL,credentials:true}));
 app.use(clerkMiddleware());
+app.use(express.static(publicDir));
 
 
 app.get("/health",(req,res) => {
