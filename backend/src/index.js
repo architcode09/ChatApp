@@ -31,5 +31,9 @@ app.get("/{*any}",(req,res,next) => {
 app.listen(PORT,()=> {
     connectionDB();
     console.log("Server is running peacefully on PORT",PORT)
+    // running the cron job
+    if(process.env.NODE_ENV === "production") {
+        job.start()
+    }
 });
 

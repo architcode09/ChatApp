@@ -44,3 +44,8 @@ This ensures:
 ### Result
 
 After redeploying, the frontend assets should load correctly and the UI should render on Render instead of showing a blank page.
+
+
+___________________________________________________________
+we are using the free renderer plan so it will make our app inactive so for that we will send get requests to our app and make it active 
+this can be implemented using the cron jobs package
