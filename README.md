@@ -49,3 +49,27 @@ After redeploying, the frontend assets should load correctly and the UI should r
 ___________________________________________________________
 we are using the free renderer plan so it will make our app inactive so for that we will send get requests to our app and make it active 
 this can be implemented using the cron jobs package
+
+## Deployment Note: `job is not defined`
+
+### Error
+
+```text
+ReferenceError: job is not defined
+```
+
+### In Simple Words
+
+The backend was trying to start a background cron job with `job.start()`, but the `job` variable was not imported into `backend/src/index.js`.
+
+So the app could start the server, but it crashed right after that line because Node.js did not know what `job` meant.
+
+### Fix Applied
+
+- imported the cron job into `backend/src/index.js`
+- fixed the cron helper in `backend/src/lib/cron.js`
+- corrected the health check URL from `/health:` to `/health`
+
+### Result
+
+After redeploying, the backend should start normally and the keep-alive cron job should run without crashing the app.

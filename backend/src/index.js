@@ -2,7 +2,7 @@
 import express from "express"
 import "dotenv/config"
 import { connectionDB } from "./lib/db.js";
-import User from "./models/user.model.js";
+import job from "./lib/cron.js";
 import {clerkMiddleware} from "@clerk/express";
 import cors from "cors";
 import path from "path";
